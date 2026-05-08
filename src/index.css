@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+body {
+  background-color: #D9D2C8;
+  font-family: "Gowun Batang", serif;
+}
+
+* {
+  transition: all 0.4s ease;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+img {
+  transition: all 0.6s ease;
+}
