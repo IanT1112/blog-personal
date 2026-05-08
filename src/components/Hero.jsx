@@ -70,7 +70,7 @@ export default function Hero() {
             transition: "opacity 1s ease 0.6s",
           }}
         >
-          Un espacio minimalista de ideas, libros y pensamiento crítico.
+          Un espacio de ideas, libros y pensamiento crítico.
         </p>
 
         {/* CTA sutil */}
