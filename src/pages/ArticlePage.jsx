@@ -41,6 +41,7 @@ export default function ArticlePage() {
   const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const load = async () => {
       const res = await fetch(
         `${url}/rest/v1/posts?id=eq.${id}&select=*`,
