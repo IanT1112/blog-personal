@@ -69,7 +69,7 @@ serve(async (req) => {
               </a>
               <div style="margin-top:60px;padding-top:24px;border-top:1px solid rgba(0,0,0,0.10);">
                 <p style="font-size:10px;color:rgba(0,0,0,0.25);letter-spacing:0.15em;text-transform:uppercase;">
-                  ian? · El conocimiento es gratuito
+                  ian? ·
                 </p>
               </div>
             </div>
