@@ -216,24 +216,54 @@ function PostForm({ initial, onSuccess }) {
 
 // Lista de posts
 function PostList({ onEdit }) {
-  const [posts, setPosts]       = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [deleting, setDeleting] = useState(null);
-  const [confirm, setConfirm]   = useState(null);
+  const [posts, setPosts]         = useState([]);
+  const [loading, setLoading]     = useState(true);
+  const [deleting, setDeleting]   = useState(null);
+  const [confirm, setConfirm]     = useState(null);
+  const [notifying, setNotifying] = useState(null);
+  const [notifyMsg, setNotifyMsg] = useState({});
 
   const loadPosts = async () => {
-  setLoading(true);
-  const h = await getHeaders();
-  console.log("headers:", h);
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/posts?select=*&order=created_at.desc`, { headers: h });
-  console.log("status:", res.status);
-  const data = await res.json();
-  console.log("data:", data);
-  setPosts(Array.isArray(data) ? data : []);
-  setLoading(false);
-};
+    setLoading(true);
+    const h = await getHeaders();
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/posts?select=*&order=created_at.desc`, { headers: h });
+    const data = await res.json();
+    setPosts(Array.isArray(data) ? data : []);
+    setLoading(false);
+  };
 
   useEffect(() => { loadPosts(); }, []);
+
+  const handleNotify = async (post) => {
+    setNotifying(post.id);
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token || SUPABASE_KEY;
+      const res = await fetch(
+        `${SUPABASE_URL}/functions/v1/notify-subscribers`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: post.title,
+            desc: post.desc,
+            category: post.category,
+            post_id: post.id,
+          }),
+        }
+      );
+      const result = await res.json();
+      setNotifyMsg({ [post.id]: result.message || "Enviado" });
+      setTimeout(() => setNotifyMsg({}), 3000);
+    } catch {
+      setNotifyMsg({ [post.id]: "Error al notificar" });
+      setTimeout(() => setNotifyMsg({}), 3000);
+    }
+    setNotifying(null);
+  };
 
   const handleDelete = async (post) => {
     setDeleting(post.id);
@@ -308,6 +338,15 @@ function PostList({ onEdit }) {
           </div>
 
           <div className="flex items-center gap-2 flex-shrink-0">
+
+            {/* Botón notificar */}
+            <button onClick={() => handleNotify(post)} disabled={notifying === post.id}
+              className="px-3 py-1.5 rounded-full text-[10px] tracking-widest uppercase text-black/35 border border-black/8 hover:bg-white/60 hover:text-black/55 transition-all duration-300 disabled:opacity-40"
+              style={{ fontFamily: "'Gowun Batang', serif" }}
+              title="Notificar a suscriptores">
+              {notifying === post.id ? "..." : notifyMsg[post.id] ? notifyMsg[post.id] : "Notificar"}
+            </button>
+
             <button onClick={() => onEdit(post)}
               className="px-3 py-1.5 rounded-full text-[10px] tracking-widest uppercase text-black/45 border border-black/10 hover:bg-white/60 hover:text-black/70 transition-all duration-300"
               style={{ fontFamily: "'Gowun Batang', serif" }}>
