@@ -151,7 +151,7 @@ export default function ArticlePage() {
 
       {/* Botón volver */}
       <button
-        onClick={() => navigate(-1)}
+          onClick={() => window.history.length > 1 ? navigate(-1) : navigate("/")}
         className="fixed top-6 left-6 z-40 flex items-center gap-2 text-xs tracking-widest uppercase text-black/35 hover:text-black/65 transition-colors duration-300"
         style={{ fontFamily: "'Gowun Batang', serif" }}
       >
@@ -272,7 +272,8 @@ export default function ArticlePage() {
              style={{ fontFamily: "'Gowun Batang', serif" }}>
             ian? · {new Date().getFullYear()}
           </p>
-          <button onClick={() => navigate(-1)}
+          <button 
+              onClick={() => window.history.length > 1 ? navigate(-1) : navigate("/")}
                   className="mt-4 text-xs tracking-widest uppercase text-black/35 hover:text-black/60 transition-colors duration-300"
                   style={{ fontFamily: "'Gowun Batang', serif" }}>
             ← Regresar
