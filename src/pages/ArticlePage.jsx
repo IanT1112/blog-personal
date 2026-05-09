@@ -41,7 +41,7 @@ export default function ArticlePage() {
   const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     const load = async () => {
       const res = await fetch(
         `${url}/rest/v1/posts?id=eq.${id}&select=*`,
@@ -280,29 +280,105 @@ export default function ArticlePage() {
         </div>
       </div>
 
-      {/* TARJETA INVISIBLE para generar imagen Stories */}
-      <div style={{ position: "fixed", top: "-9999px", left: "-9999px", width: "1080px", height: "1920px" }}>
-        <div ref={cardRef}
-             style={{ width: "1080px", height: "1920px", background: "#D9D2C8", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
-          <img src={post.image_url} alt=""
-               style={{ position: "absolute", inset: 0, width: "100%", height: "65%", objectFit: "cover" }}
-               crossOrigin="anonymous" />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(217,210,200,0) 35%, rgba(217,210,200,1) 65%)" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "80px", display: "flex", flexDirection: "column", gap: "28px" }}>
-            <span style={{ fontFamily: "'Gowun Batang', serif", fontSize: "28px", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(0,0,0,0.35)" }}>
-              {categoryLabel}
-            </span>
-            <h2 style={{ fontFamily: "'Gowun Batang', serif", fontSize: "72px", lineHeight: 1.2, color: "rgba(0,0,0,0.85)", fontWeight: "normal", margin: 0 }}>
-              {post.title}
-            </h2>
-            <p style={{ fontFamily: "'Gowun Batang', serif", fontSize: "36px", color: "rgba(0,0,0,0.45)", fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
-              {post.desc}
-            </p>
-            <div style={{ display: "flex", alignItems: "center", gap: "24px", marginTop: "20px" }}>
-              <div style={{ width: "60px", height: "1px", background: "rgba(0,0,0,0.2)" }} />
-              <span style={{ fontFamily: "'Gowun Batang', serif", fontSize: "26px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(0,0,0,0.3)" }}>
-                ian?
+      {/* TARJETA para generar imagen Stories */}
+      <div style={{ position: "fixed", top: "-9999px", left: "-9999px" }}>
+        <div
+          ref={cardRef}
+          style={{
+            width: "1080px",
+            height: "1920px",
+            background: "#D9D2C8",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          {/* Fondo con manchas suaves */}
+          <div style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "radial-gradient(circle at 20% 30%, rgba(180,165,140,0.35) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(200,185,160,0.25) 0%, transparent 50%)",
+          }} />
+
+          {/* Tarjeta central con glassmorphism */}
+          <div style={{
+            position: "relative",
+            width: "840px",
+            borderRadius: "48px",
+            overflow: "hidden",
+            background: "rgba(255,255,255,0.28)",
+            backdropFilter: "blur(24px)",
+            border: "1.5px solid rgba(255,255,255,0.5)",
+            boxShadow: "0 32px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.6)",
+            display: "flex",
+            flexDirection: "column",
+          }}>
+
+            {/* Imagen del artículo */}
+            <div style={{ position: "relative", width: "100%", height: "1100px" }}>
+              <img
+                src={post.image_url} alt=""
+                crossOrigin="anonymous"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+              />
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "linear-gradient(to bottom, transparent 60%, rgba(217,210,200,0.12) 100%)",
+              }} />
+            </div>
+
+            {/* Contenido */}
+            <div style={{ padding: "44px 64px 56px", display: "flex", flexDirection: "column", gap: "16px" }}>
+
+              {/* Categoría */}
+              <span style={{
+                fontFamily: "'Gowun Batang', serif",
+                fontSize: "20px",
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                color: "rgba(0,0,0,0.28)",
+              }}>
+                {categoryLabel}
               </span>
+
+              {/* Título */}
+              <h2 style={{
+                fontFamily: "'Gowun Batang', serif",
+                fontSize: "54px",
+                lineHeight: 1.22,
+                color: "rgba(0,0,0,0.82)",
+                fontWeight: "normal",
+                margin: 0,
+              }}>
+                {post.title}
+              </h2>
+
+              {/* Descripción */}
+              <p style={{
+                fontFamily: "'Gowun Batang', serif",
+                fontSize: "26px",
+                color: "rgba(0,0,0,0.40)",
+                fontStyle: "italic",
+                lineHeight: 1.5,
+                margin: 0,
+              }}>
+                {post.desc}
+              </p>
+
+              {/* Firma */}
+              <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "6px" }}>
+                <div style={{ width: "40px", height: "1px", background: "rgba(0,0,0,0.15)" }} />
+                <span style={{
+                  fontFamily: "'Gowun Batang', serif",
+                  fontSize: "18px",
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: "rgba(0,0,0,0.25)",
+                }}>
+                  ian?
+                </span>
+              </div>
             </div>
           </div>
         </div>
