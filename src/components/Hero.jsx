@@ -52,14 +52,9 @@ export default function Hero() {
         style={{
           opacity: visible ? 0.18 : 0,
           transition: "opacity 1.1s ease 0.2s",
+          
         }}
       >
-        <img
-          src="/yo.png"
-          alt=""
-          className="w-full h-full object-cover"
-          style={{ objectPosition: "center 10%" }}
-        />
       </div>
 
       {/* CONTENIDO CENTRADO VERTICALMENTE */}
