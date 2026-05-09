@@ -37,7 +37,7 @@ export default function Hero() {
           alt="Foto personal"
           className="w-full h-full object-cover"
           style={{
-            objectPosition: "center 10%",
+            objectPosition: "center 60%",
             WebkitMaskImage:
               "linear-gradient(to left, black 40%, transparent 100%)",
             maskImage:
