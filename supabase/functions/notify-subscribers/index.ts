@@ -11,7 +11,6 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  // Manejar preflight
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
@@ -40,8 +39,10 @@ serve(async (req) => {
   const categoryLabel = category === "article" ? "Artículo" : category === "book" ? "Libro" : "Documental";
   const postUrl = `https://ianconia.xyz/post/${post_id}`;
 
-  const emails = subscribers.map((s: { email: string }) =>
-    fetch("https://api.resend.com/emails", {
+  for (let i = 0; i < subscribers.length; i++) {
+    const s = subscribers[i];
+    if (i > 0) await new Promise(resolve => setTimeout(resolve, 300));
+    await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -69,17 +70,15 @@ serve(async (req) => {
               </a>
               <div style="margin-top:60px;padding-top:24px;border-top:1px solid rgba(0,0,0,0.10);">
                 <p style="font-size:10px;color:rgba(0,0,0,0.25);letter-spacing:0.15em;text-transform:uppercase;">
-                  ian? ·
+                  ian?
                 </p>
               </div>
             </div>
           </div>
         `,
       }),
-    })
-  );
-
-  await Promise.all(emails);
+    });
+  }
 
   return new Response(
     JSON.stringify({ message: `Enviado a ${subscribers.length} suscriptores` }),
