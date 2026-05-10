@@ -38,7 +38,7 @@ serve(async (req) => {
   }
 
   const categoryLabel = category === "article" ? "Artículo" : category === "book" ? "Libro" : "Documental";
-  const postUrl = `https://ianq.vercel.app/post/${post_id}`;
+  const postUrl = `https://ianconia.xyz/post/${post_id}`;
 
   const emails = subscribers.map((s: { email: string }) =>
     fetch("https://api.resend.com/emails", {

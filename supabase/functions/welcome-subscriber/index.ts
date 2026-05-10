@@ -45,7 +45,7 @@ serve(async (req) => {
               Mientras tanto, ya puedes explorar lo que hay publicado.
             </p>
 
-            <a href="https://ianq.vercel.app"
+            <a href="https://ianconia.xyz"
                style="display:inline-block;padding:12px 28px;background:rgba(0,0,0,0.08);border-radius:999px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.55);text-decoration:none;">
               Explorar ian?
             </a>
