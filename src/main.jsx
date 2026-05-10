@@ -7,7 +7,6 @@ import Admin from './pages/Admin.jsx'
 import ArticlePage from './pages/ArticlePage.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/"           element={<App />} />
@@ -15,5 +14,4 @@ createRoot(document.getElementById('root')).render(
         <Route path="/post/:id"   element={<ArticlePage />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
 )
