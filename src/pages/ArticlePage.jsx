@@ -366,9 +366,9 @@ export default function ArticlePage() {
       {/* TARJETA CITA (invisible, para generar imagen) */}
       <div style={{ position: "fixed", top: "-9999px", left: "-9999px" }}>
         <div ref={quoteCardRef}
-          style={{ width: "1080px", height: "1080px", background: "#D9D2C8", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+          style={{ width: "1080px", height: "1920px", background: "#D9D2C8", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 25% 25%, rgba(180,165,140,0.30) 0%, transparent 55%), radial-gradient(circle at 75% 75%, rgba(200,185,160,0.22) 0%, transparent 55%)" }} />
-          <div style={{ position: "relative", width: "840px", borderRadius: "48px", padding: "80px", background: "rgba(255,255,255,0.28)", backdropFilter: "blur(24px)", border: "1.5px solid rgba(255,255,255,0.55)", boxShadow: "0 32px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.6)", display: "flex", flexDirection: "column", gap: "48px" }}>
+          <div style={{ position: "relative", width: "840px", borderRadius: "48px", padding: "100px 80px", background: "rgba(255,255,255,0.28)", backdropFilter: "blur(24px)", border: "1.5px solid rgba(255,255,255,0.55)", boxShadow: "0 32px 80px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.6)", display: "flex", flexDirection: "column", gap: "48px" }}>
             {/* Comillas decorativas */}
             <span style={{ fontFamily: "'Gowun Batang', serif", fontSize: "120px", lineHeight: 0.6, color: "rgba(0,0,0,0.10)", display: "block" }}>"</span>
             {/* Texto de la cita */}
