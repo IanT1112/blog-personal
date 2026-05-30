@@ -203,26 +203,26 @@ export default function ArticlePage() {
       </button>
 
       {/* IMAGEN HERO */}
-      <div className="relative w-full overflow-hidden"
-           style={{ height: "70vh", opacity: visible ? 1 : 0, transition: "opacity 1s ease" }}>
-        <img
-          src={post.image_reading_url || post.image_url} alt={post.title}
-          className="w-full h-full object-cover"
-          style={{ transform: visible ? "scale(1)" : "scale(1.04)", transition: "transform 1.4s ease" }}
-        />
-        <div className="absolute inset-0"
-             style={{ background: "linear-gradient(to bottom, rgba(217,210,200,0) 30%, rgba(217,210,200,0.6) 70%, rgba(217,210,200,1) 100%)" }} />
-        <div className="absolute top-8 right-8">
-          <span className="text-[10px] tracking-[0.3em] uppercase px-3 py-1.5 rounded-full"
-                style={{ fontFamily: "'Gowun Batang', serif", background: "rgba(217,210,200,0.7)", backdropFilter: "blur(8px)", color: "rgba(0,0,0,0.45)", border: "1px solid rgba(0,0,0,0.08)" }}>
-            {categoryLabel}
-          </span>
+        <div className="relative w-full overflow-hidden"
+      style={{ height: "clamp(200px, 40vw, 70vh)", opacity: visible ? 1 : 0, transition: "opacity 1s ease" }}>
+          <img
+            src={post.image_reading_url || post.image_url} alt={post.title}
+            className="w-full h-full object-cover object-center"
+            style={{ transform: visible ? "scale(1)" : "scale(1.04)", transition: "transform 1.4s ease" }}
+          />
+          <div className="absolute inset-0"
+              style={{ background: "linear-gradient(to bottom, rgba(217,210,200,0) 30%, rgba(217,210,200,0.6) 70%, rgba(217,210,200,1) 100%)" }} />
+          <div className="absolute top-8 right-8">
+            <span className="text-[10px] tracking-[0.3em] uppercase px-3 py-1.5 rounded-full"
+                  style={{ fontFamily: "'Gowun Batang', serif", background: "rgba(217,210,200,0.7)", backdropFilter: "blur(8px)", color: "rgba(0,0,0,0.45)", border: "1px solid rgba(0,0,0,0.08)" }}>
+              {categoryLabel}
+            </span>
+          </div>
         </div>
-      </div>
 
       {/* CONTENIDO */}
       <div className="relative z-10 px-6 md:px-0"
-           style={{ maxWidth: "680px", margin: "-64px auto 0", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s" }}>
+           style={{ maxWidth: "680px", margin: "0 auto 0", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s" }}>
 
         {/* Metadata */}
         <div className="flex items-center gap-4 mb-8">
