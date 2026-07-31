@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 const links = ["Inicio", "Artículos", "Libros", "Documentales"];
-
 export default function Navbar() {
   const [active, setActive] = useState("inicio");
   const [scrolled, setScrolled] = useState(false);

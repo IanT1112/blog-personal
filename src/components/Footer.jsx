@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
 
         <a
-          href="https://ian-tapiaa.vercel.app/"
+          href="https://iantapia.xyz/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visitar el portafolio de Ian Tapia"

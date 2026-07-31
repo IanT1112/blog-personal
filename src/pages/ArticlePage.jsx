@@ -196,8 +196,13 @@ export default function ArticlePage() {
       {/* Botón volver */}
       <button
         onClick={() => window.history.length > 1 ? navigate(-1) : navigate("/")}
-        className="fixed top-6 left-6 z-40 flex items-center gap-2 text-xs tracking-widest uppercase text-black/35 hover:text-black/65 transition-colors duration-300"
-        style={{ fontFamily: "'Gowun Batang', serif" }}
+        className="fixed top-6 left-6 z-40 flex items-center gap-2 rounded-full border px-4 py-2.5 text-xs tracking-widest uppercase text-black/65 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-black/25 hover:bg-white/80 hover:text-black/85"
+        style={{
+          fontFamily: "'Gowun Batang', serif",
+          background: "rgba(217, 210, 200, 0.82)",
+          borderColor: "rgba(0, 0, 0, 0.14)",
+          boxShadow: "0 4px 18px rgba(0, 0, 0, 0.12)",
+        }}
       >
         <span>←</span><span>Volver</span>
       </button>
