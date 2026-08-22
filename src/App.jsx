@@ -49,7 +49,7 @@ export default function App() {
       <Hero />
 
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-10 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="grid items-stretch gap-10 xl:grid-cols-[minmax(0,1fr)_340px]">
           <main className="mx-auto w-full max-w-4xl xl:mx-0">
             {loading ? (
               <div className="flex items-center justify-center py-32">
@@ -83,8 +83,10 @@ export default function App() {
             )}
           </main>
 
-          <aside className="hidden border-l border-black/10 pl-7 xl:block">
-            <NewsSection mode="desktop" />
+          <aside className="relative hidden min-h-0 border-l border-black/10 xl:block">
+            <div className="absolute inset-0 pl-7">
+              <NewsSection mode="desktop" />
+            </div>
           </aside>
         </div>
 

@@ -82,38 +82,55 @@ export default function NewsSection({ mode = "desktop" }) {
   }
 
   return (
-    <section className="py-10 xl:sticky xl:top-8">
-      <div className="mb-8">
-        <span className="text-[10px] uppercase tracking-[0.35em] text-black/40">
-          Ianconia Briefing
-        </span>
+  <section className="flex h-full min-h-0 flex-col py-10">
+    <div className="mb-8 shrink-0">
+      <span className="text-[10px] uppercase tracking-[0.35em] text-black/40">
+        Ianconia Briefing
+      </span>
 
-        <h2
-          className="mt-3 text-2xl text-black"
-          style={{ fontFamily: "'Gowun Batang', serif" }}
-        >
-          Lo que importa ahora
-        </h2>
+      <h2
+        className="mt-3 text-2xl text-black"
+        style={{ fontFamily: "'Gowun Batang', serif" }}
+      >
+        Lo que importa ahora
+      </h2>
 
-        <p className="mt-3 text-sm leading-6 text-black/50">
-          Tecnología, IA, negocios, economía.
-        </p>
+      <p className="mt-3 text-sm leading-6 text-black/50">
+        Tecnología, IA, negocios, economía y mercados.
+      </p>
+    </div>
+
+    {loading ? (
+      <p className="text-xs text-black/40">
+        Cargando...
+      </p>
+    ) : (
+      <div
+        className="
+          min-h-0
+          flex-1
+          overflow-y-auto
+          overscroll-contain
+          pr-3
+
+          [scrollbar-width:thin]
+          [scrollbar-color:rgba(0,0,0,0.18)_transparent]
+
+          [&::-webkit-scrollbar]:w-[5px]
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          [&::-webkit-scrollbar-thumb]:bg-black/15
+          [&::-webkit-scrollbar-thumb:hover]:bg-black/25
+        "
+      >
+        {news.map((article) => (
+          <NewsCard
+            key={article.id}
+            article={article}
+          />
+        ))}
       </div>
-
-      {loading ? (
-        <p className="text-xs text-black/40">
-          Cargando...
-        </p>
-      ) : (
-        <div>
-          {news.map((article) => (
-            <NewsCard
-              key={article.id}
-              article={article}
-            />
-          ))}
-        </div>
-      )}
-    </section>
-  );
+    )}
+  </section>
+);
 }

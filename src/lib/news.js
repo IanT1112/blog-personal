@@ -5,7 +5,7 @@ export async function getLatestNews() {
     .from("news")
     .select("*")
     .order("published_at", { ascending: false })
-    .limit(50);
+    .limit(100);
 
   if (error) {
     console.error("Error cargando noticias:", error);
@@ -13,13 +13,13 @@ export async function getLatestNews() {
   }
 
   const limits = {
-    IA: 2,
-    Tecnología: 2,
-    Negocios: 2,
-    Mercados: 2,
-    Economía: 2,
-    Geopolítica: 1,
-    Proyecciones: 1,
+    IA: 5,
+    Tecnología: 5,
+    Negocios: 5,
+    Mercados: 5,
+    Economía: 5,
+    Geopolítica: 3,
+    Proyecciones: 2,
   };
 
   const counters = {
@@ -45,7 +45,7 @@ export async function getLatestNews() {
       counters[category]++;
     }
 
-    if (selected.length >= 12) {
+    if (selected.length >= 30) {
       break;
     }
   }
