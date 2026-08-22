@@ -4,23 +4,21 @@ export async function getLatestNews() {
   const { data, error } = await supabase
     .from("news")
     .select("*")
-    .order("importance", { ascending: false })
     .order("published_at", { ascending: false })
-    .limit(40);
+    .limit(50);
 
   if (error) {
     console.error("Error cargando noticias:", error);
     return [];
   }
 
-  const selected = [];
-
   const limits = {
     IA: 2,
     Tecnología: 2,
-    Negocios: 3,
+    Negocios: 2,
+    Mercados: 2,
     Economía: 2,
-    Geopolítica: 2,
+    Geopolítica: 1,
     Proyecciones: 1,
   };
 
@@ -28,10 +26,13 @@ export async function getLatestNews() {
     IA: 0,
     Tecnología: 0,
     Negocios: 0,
+    Mercados: 0,
     Economía: 0,
     Geopolítica: 0,
     Proyecciones: 0,
   };
+
+  const selected = [];
 
   for (const article of data) {
     const category = article.category;

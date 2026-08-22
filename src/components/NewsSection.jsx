@@ -8,7 +8,7 @@ export default function NewsSection({ mode = "desktop" }) {
 
   useEffect(() => {
     async function loadNews() {
-      const data = await getLatestNews(12);
+      const data = await getLatestNews();
       setNews(data);
       setLoading(false);
     }
@@ -32,7 +32,7 @@ export default function NewsSection({ mode = "desktop" }) {
           </h2>
 
           <p className="mt-3 text-sm leading-6 text-black/50">
-            Tecnología, IA, negocios, economía y proyecciones.
+            Tecnología, IA, negocios y economía.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function NewsSection({ mode = "desktop" }) {
         </h2>
 
         <p className="mt-3 text-sm leading-6 text-black/50">
-          Tecnología, IA, negocios, economía y proyecciones.
+          Tecnología, IA, negocios, economía.
         </p>
       </div>
 
