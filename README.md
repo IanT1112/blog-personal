@@ -1,18 +1,41 @@
-# React + Vite
+# IANCONIA — Plataforma editorial fullstack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma editorial desarrollada desde cero para publicar artículos, reseñas de libros, documentales y un briefing automatizado de noticias.
 
-Currently, two official plugins are available:
+El proyecto combina una experiencia de lectura cuidada con administración de contenido, automatización de datos, seguridad y analítica en producción.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Características principales
 
-## React Compiler
+- Experiencia de lectura responsive con diseño editorial.
+- Panel administrativo para gestionar artículos, libros y documentales.
+- Autenticación mediante JWT y protección de datos con Row Level Security.
+- Newsletter con correos de bienvenida y notificaciones a suscriptores.
+- Generador de imágenes para Instagram Stories.
+- Google Analytics 4 con seguimiento de tráfico y comportamiento.
+- Despliegue continuo y dominio propio.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Pipeline automatizado de noticias
 
-Note: This will impact Vite dev & build performances.
+IANCONIA incorpora un pipeline ETL serverless que procesa múltiples fuentes RSS cada 12 horas:
 
-## Expanding the ESLint configuration
+`RSS → extracción → limpieza → clasificación → scoring → Supabase → React`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El sistema clasifica noticias en siete categorías, determina su relevancia, evita duplicados y elimina automáticamente el contenido antiguo.
+
+## Stack tecnológico
+
+- **Frontend:** React 19, Vite, Tailwind CSS y React Router
+- **Backend y datos:** Supabase, PostgreSQL, Edge Functions y Storage
+- **Seguridad:** Supabase Auth, JWT y Row Level Security
+- **Automatización:** TypeScript, RSS y Supabase Cron
+- **Email:** Resend API, DKIM, SPF y DMARC
+- **Analytics:** Google Analytics 4
+- **Deploy:** Vercel CI/CD y dominio propio
+
+## Lo que demuestra
+
+Este proyecto refleja experiencia construyendo y desplegando un producto fullstack completo: desde el diseño de interfaz y la arquitectura de datos hasta la seguridad, automatización, analítica y operación en producción.
+
+---
+
+Desarrollado por **Ian Tapia**.
